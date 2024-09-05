@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 app.set('view engine', 'ejs')
@@ -11,7 +12,7 @@ console.log(uri);
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+ const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -19,7 +20,7 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
@@ -31,8 +32,31 @@ async function run() {
     await client.close();
   }
 }
+
 run().catch(console.dir);
 
+// function whateverNameOfIt (params) {}
+// whatever() => {}
+
+app.get('/mongo', async (req, res) => {
+
+  console.log('in /mongo');
+  await client.connect();
+  console.log('connected?');
+
+  // Send a ping to confirm a successful connection
+  let result = await client.db("courtneys-db")
+  .collection("courtneys-collection")
+  .find({})
+  .toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+
+    res.render('mongo', {
+      mongoResult : result[0]._id
+    });
+  })
+})  
 
 app.get('/', function (req, res) {
   // res.send('Hello Node from Ex on local dev box')
