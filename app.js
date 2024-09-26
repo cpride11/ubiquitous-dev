@@ -38,7 +38,7 @@ console.log('im on a node server change that and that tanad f, yo');
   }
 }
 
-// run().catch(console.dir);
+run().catch(console.dir);
 
 // function whateverNameOfIt (params) {}
 // whatever() => {}
