@@ -6,6 +6,8 @@ const { urlencoded } = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = `mongodb+srv://cpride11:${process.env.MONGO_PWD}@cluster0.mw4al.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const PORT = process.env.PORT || 3000;
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
@@ -135,4 +137,8 @@ console.log('im on a node server change that and that tanad f, yo');
   })
 
 
-app.listen(5500)
+//app.listen(5500)
+
+app.listen(PORT, () => {
+  console.log(`Server is running & listening on port ${PORT}`);
+});
