@@ -27,44 +27,21 @@ console.log('im on a node server change that and that tanad f, yo');
   }
 });
 
-//  async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-
-// run().catch(console.dir);
-
-// function whateverNameOfIt (params) {}
-// whatever() => {}
 
   app.get('/', function (req, res) {
     // res.send('Hello Node from Ex on local dev box')
-    res.sendFile('index.html');
+    res.sendFile('index.ejs');
   })
   
   app.get('/ejs', (req,res)=>{
   
     res.render('index', {
-      myServerVariable : "something from server"
+     
     });
   
     //can you get content from client...to console? 
   })
   
-  
-//app.get('/mongo', async (req, res) => {
-
-//  console.log('in /mongo');
-//  await client.connect();
-//  console.log('connected?');
 
   app.get('/read', async (req,res)=>{
 
