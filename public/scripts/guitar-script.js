@@ -1,15 +1,15 @@
 // A $( document ).ready() block.
-$(document).ready(function() {
+$(document).ready(function () {
   loadSongData("songList");
-  addEvents(); 
+  addEvents();
 });
 
 function loadSongData(appendId) {
   let appendElement = $(`#${appendId}`);
-  appendElement.empty(); 
-  
+  appendElement.empty();
+
   $.each(data.songs, (index, song) => {
-      appendElement.append(`
+    appendElement.append(`
           <li id="songNo${index}Name" class="list-group-item mb-1 songName">
               ${song.name} 
               <ul class="list-group songDetails">
@@ -47,74 +47,74 @@ function loadSongData(appendId) {
                   </li>
               </ul>
               <button class="btn btn-danger btn-sm" onclick="deleteSong(${index})">Delete</button>
-          </li>`); 
+          </li>`);
 
-      $('.songDetails').hide();
-      $('input.editSong').prop('readonly', true); 
+    $('.songDetails').hide();
+    $('input.editSong').prop('readonly', true);
   });
 }
 
 function addEvents() {
   $('.songName').on('click', (e) => {
-      let $this = $(e.target); 
-      let $thisId = $this.attr('id');
-      $('#' + $thisId + ' > ul.songDetails').toggle(); 
-  }); 
+    let $this = $(e.target);
+    let $thisId = $this.attr('id');
+    $('#' + $thisId + ' > ul.songDetails').toggle();
+  });
 
   $('#btnHideAll').on('click', () => {
-      $('ul.songDetails').hide();
+    $('ul.songDetails').hide();
   });
-  
+
   $('#btnShowAll').on('click', () => {
-      $('ul.songDetails').show();
+    $('ul.songDetails').show();
   });
 
   $('input.editSong').on('click', (e) => {
-      let $this = $(e.target); 
-      $this.prop('readonly', false); 
+    let $this = $(e.target);
+    $this.prop('readonly', false);
   });
 
   $('#btnSaveSong').on('click', () => {
-      data.songs.push({ 
-          name: $('#songAddName').val(), 
-          artist: $('#songAddArtist').val(),
-          status: $('#songAddStatus').val(), 
-          next: $('#songAddNext').val(), 
-          chords: $('#songAddChords').val(),
-          lyrics: $('#songAddLyrics').val(), 
-          notes: $('#songAddNotes').val(),
-          tags: $('#songAddTags').val(),
-          links: $('#songAddLinks').val(), 
-      }); 
-      
-      loadSongData("songList");
-      addEvents(); 
+    data.songs.push({
+      name: $('#songAddName').val(),
+      artist: $('#songAddArtist').val(),
+      status: $('#songAddStatus').val(),
+      next: $('#songAddNext').val(),
+      chords: $('#songAddChords').val(),
+      lyrics: $('#songAddLyrics').val(),
+      notes: $('#songAddNotes').val(),
+      tags: $('#songAddTags').val(),
+      links: $('#songAddLinks').val(),
+    });
 
-      $('#addSongModal .btn-close').click();
-      $('#addSongModal input').val(''); 
+    loadSongData("songList");
+    addEvents();
+
+    $('#addSongModal .btn-close').click();
+    $('#addSongModal input').val('');
   });
 
   $('input.editSong').on('blur', (e) => {
-      let $this = $(e.target); 
-      let $thisId = $this.attr('id'); 
-      let $thisKey = $this.attr('name');
-      let regexDigit = /\d+/g;
-      let songIndex = $thisId.match(regexDigit)[0]; 
+    let $this = $(e.target);
+    let $thisId = $this.attr('id');
+    let $thisKey = $this.attr('name');
+    let regexDigit = /\d+/g;
+    let songIndex = $thisId.match(regexDigit)[0];
 
-      data.songs[songIndex][$thisKey] = $this.val(); 
-      $(e.target).prop('readonly', true); 
+    data.songs[songIndex][$thisKey] = $this.val();
+    $(e.target).prop('readonly', true);
   });
 
   $('#btnConsoleData').on('click', () => {
-      console.log(data.songs); 
+    console.log(data.songs);
   });
 }
 
 // Function to delete a song
 function deleteSong(index) {
   if (confirm('Are you sure you want to delete this song?')) {
-      data.songs.splice(index, 1); // Remove the song from the data array
-      loadSongData("songList"); // Reload the song list
-      addEvents(); // Re-add events
+    data.songs.splice(index, 1); // Remove the song from the data array
+    loadSongData("songList"); // Reload the song list
+    addEvents(); // Re-add events
   }
 }
