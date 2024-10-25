@@ -14,12 +14,6 @@ li {
   font-style: normal;
 }
 
-/* .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
- }    */
-
 .displaySong {
 
   background-color: rgb(207, 219, 224); 
@@ -27,12 +21,5 @@ li {
 }
 
 .seeMe {
-  /* border-style: dashed; 
-  border-width: 4px ;
-  border-color: green;  */
   border: dashed 4px rgb(187, 0, 255);   
 }
-
-/* use # to prefix css selector for dom/html element id attribute */
-/* #songList {
-  background-color: #CE93D8;} */

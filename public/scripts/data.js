@@ -1,5 +1,5 @@
-data = {
-  
+let data = {
+
   songs: [
     { 
       name: "Wish You Were Here", 
