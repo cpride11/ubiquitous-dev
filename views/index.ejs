@@ -141,11 +141,6 @@
                                         placeholder="links, separated, by, commas">
                                 </li>
 
-                                <!-- <li class="input-group w-100">
-                <span class="w-20 input-group-text">Spotify?</span>
-                <span class="list-group-item form-control" id="songNoStatus">Yes/no</span>
-              </li> -->
-
                             </ul>
                         </div>
                         <div class="modal-footer">
@@ -157,69 +152,52 @@
             </div>
 
 
+            <!-- Edit Modal -->
+            <div id="editSongModal" class="modal fade" tabindex="-1" aria-labelledby="editSongModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Song</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                                <li class="input-group w-100">
+                                    <span class="w-20 input-group-text">song name</span>
+                                    <input id="songEditName" type="text" class="form-control" placeholder="song name">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="btnUpdateSong" type="button" class="btn btn-primary"
+                                onclick="updateSong()">Update Song</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <ul id="songList" class="list-group">
-                <li class="list-group-item">no songs loaded</li>
-
-                <!-- hardcoded html template -->
-                <!-- <li class="list-group-item">
-      <span id="songNoName">Song No. Name</span>
-      <ul class="list-group">
-        <li class="input-group w-100">
-            <span class="w-20 input-group-text">artist</span>
-            <span class="list-group-item form-control" id="songNoArtist">Song No. Artist</span>
-        </li>
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">status</span>
-          <span class="list-group-item form-control" id="songNoStatus">Song No. Status: good, bad, needs work...</span>
-        </li>
-       
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">chords</span>
-          <span class="list-group-item form-control" id="songNoStatus">Song No. chords: yes, no, maybe?</span>
-        </li>
-
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">lyrics?</span>
-          <span class="list-group-item form-control" id="songNoStatus">Song No. lyrics: yes, no maybe?</span>
-        </li>
-
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">next?</span>
-          <span class="list-group-item form-control" id="songNoStatus">Song No. what to do next: practice?</span>
-        </li>
-
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">Notes</span>
-          <span class="list-group-item form-control" id="songNoStatus">Song No. notes: key, capo, riffs, fills</span>
-        </li>
-
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">Tags</span>
-          <span class="list-group-item form-control" id="songNoStatus">
-            <span class="badge bg-secondary">tag1</span> 
-            <span class="badge bg-secondary">tag2</span>
-            <span class="badge bg-secondary">tag3</span>
-            <span class="badge bg-secondary">tag4</span>
-          </span>
-        </li>
-
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">Links</span>
-          <span class="list-group-item form-control" id="songNoStatus">
-            <a href="#">link1</a>
-            <a href="#">link2</a>
-            <a href="#">link3</a>
-            <a href="#">link4</a>
-          </span>
-        </li>
-
-        <li class="input-group w-100">
-          <span class="w-20 input-group-text">Spotify?</span>
-          <span class="list-group-item form-control" id="songNoStatus">Yes/no</span>
-        </li>
-      
-      </ul>
-    </li> -->
+                <% if (songs.length===0) { %>
+                    <li class="list-group-item">No songs loaded</li>
+                    <% } else { %>
+                        <% songs.forEach(song=> { %>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>
+                                        <%= song.name %>
+                                    </strong> by <%= song.artist %>
+                                </div>
+                                <div>
+                                    <button class="btn btn-warning btn-sm"
+                                        onclick="openEditModal('<%= song.id %>', '<%= song.name %>', '<%= song.artist %>', '<%= song.status %>', '<%= song.chords %>', '<%= song.lyrics %>', '<%= song.next %>', '<%= song.notes %>', '<%= song.tags %>', '<%= song.links %>')">Edit</button>
+                                    <button class="btn btn-danger btn-sm"
+                                        onclick="deleteSong('<%= song.id %>')">Delete</button>
+                                </div>
+                            </li>
+                            <% }) %>
+                                <% } %>
 
             </ul>
         </div>
