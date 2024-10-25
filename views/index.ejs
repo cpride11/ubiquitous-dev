@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 
 <head>
@@ -8,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
     <link rel="stylesheet" href="styles/guitar-style.css">
+=======
+    <html lang="en">
+>>>>>>> 9f188469adf6f93461294944ec261a890513a389
 
 </head>
 
@@ -30,9 +34,26 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
 
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link" href="pages/about.html">about barry</a>
                     </li>
+=======
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-cassette"></i>
+                    Barry's Secret Guitar APP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item fluid">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+>>>>>>> 9f188469adf6f93461294944ec261a890513a389
 
                     <li class="nav-item">
                         <a class="nav-link" target="repo"
@@ -41,11 +62,116 @@
                     </li>
 
 
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link" target="nu"
                             href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fbarrycumbie.github.io%2Furban-fishstick-guitar-app%2F">
                             check page validity ✅</a>
                     </li>
+=======
+                        <li class="nav-item">
+                            <a class="nav-link" target="nu"
+                                href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fbarrycumbie.github.io%2Furban-fishstick-guitar-app%2F">
+                                check page validity ✅</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="m-2 p-2 row">
+            <div class="col-lg-8 offset-lg-2">
+                <h2>Songs I play</h2>
+                <div class="mb-3">
+
+                    <button id="btnAddSong" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#addSongModal">add song</button>
+
+                    <button id="btnShowAll" class="btn btn-info btn-sm">show all</button>
+                    <button id="btnHideAll" class="btn btn-info btn-sm">hide all</button>
+
+                    <button id="btnConsoleData" class="btn btn-info btn-sm">write data object in console</button>
+
+                </div>
+
+                <!-- Modal -->
+                <div id="addSongModal" class="modal fade" tabindex="-1" aria-labelledby="addSongModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Song</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="list-group">
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">song name</span>
+                                        <input id="songAddName" type="text" class="form-control"
+                                            placeholder="song name">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">artist</span>
+                                        <input id="songAddArtist" type="text" class="form-control" placeholder="artist">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">status</span>
+                                        <input id="songAddStatus" type="text" class="form-control" placeholder="status">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">chords</span>
+                                        <input id="songAddChords" type="text" class="form-control" placeholder="chords">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">lyrics?</span>
+                                        <input id="songAddLyrics" type="text" class="form-control" placeholder="lyrics">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">next?</span>
+                                        <input id="songAddNext" type="text" class="form-control"
+                                            placeholder="next steps?">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">Notes</span>
+                                        <input id="songAddNotes" type="text" class="form-control"
+                                            placeholder="notes about it">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">Tags</span>
+                                        <input id="songAddTags" type="text" class="form-control"
+                                            placeholder="tags, separated, by, commas">
+                                    </li>
+
+                                    <li class="input-group w-100">
+                                        <span class="w-20 input-group-text">Links</span>
+                                        <input id="songAddLinks" type="text" class="form-control"
+                                            placeholder="links, separated, by, commas">
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="btnSaveSong" type="button" class="btn btn-primary">save song</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <ul id="songList" class="list-group">
+                    <li class="list-group-item">no songs loaded</li>
+>>>>>>> 9f188469adf6f93461294944ec261a890513a389
 
                 </ul>
             </div>
@@ -79,6 +205,7 @@
                         <div class="modal-body">
                             <ul class="list-group">
 
+<<<<<<< HEAD
                                 <li class="input-group w-100">
                                     <span class="w-20 input-group-text">song name</span>
                                     <input id="songAddName" type="text" class="form-control" placeholder="song name">
@@ -215,3 +342,6 @@
 </body>
 
 </html>
+=======
+    </html>
+>>>>>>> 9f188469adf6f93461294944ec261a890513a389

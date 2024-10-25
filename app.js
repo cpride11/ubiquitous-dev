@@ -27,9 +27,9 @@ console.log('im on a node server change that and that tanad f, yo');
   }
 });
 
-
   app.get('/', function (req, res) {
     // res.send('Hello Node from Ex on local dev box')
+    res.sendFile('index.ejs');
     res.sendFile('index.ejs');
   })
   
@@ -45,20 +45,21 @@ console.log('im on a node server change that and that tanad f, yo');
 
   app.get('/read', async (req,res)=>{
 
+  app.get('/read', async (req,res)=>{
+
     console.log('in /read');
     await client.connect();
     
-    console.log('connected?');
+    console.log('I should be connected');
     // Send a ping to confirm a successful connection
 
   let result = await client.db("courtneys-db").collection("courtneys-collection").find({}).toArray();
     console.log(result);
 
-    res.render('read', {
+    res.render('index', {
       postData : result
     });
   })
-
 
   app.post('/insert', async (req,res)=> {
 
