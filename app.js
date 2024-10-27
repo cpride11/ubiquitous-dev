@@ -83,6 +83,7 @@ console.log('im on a node server change that and that tanad f, yo');
     console.log("req.parms.id: ", req.params.id)
   
     client.connect; 
+
     const collection = client.db("courtneys-db").collection("courtneys-collection");
     let result = await collection.findOneAndUpdate( 
     {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
@@ -98,6 +99,7 @@ console.log('im on a node server change that and that tanad f, yo');
     console.log("req.parms.id: ", req.params.id)
   
     client.connect; 
+    
     const collection = client.db("courtneys-db").collection("courtneys-collection");
     let result = await collection.findOneAndDelete( 
     {"_id": new ObjectId(req.params.id)})
