@@ -27,25 +27,24 @@ console.log('im on a node server change that and that tanad f, yo');
   }
 });
 
-app.get('/', function (req, res) {
-  // res.send('Hello Node from Ex on local dev box')
-  res.sendFile('index.ejs');
-})
-
-app.get('/ejs', (req,res)=>{
-
-  res.render('index', {
-    myServerVariable : "something from server"
-  });
+  app.get('/', function (req, res) {
+    // res.send('Hello Node from Ex on local dev box')
+    res.sendFile('index.ejs');
+  })
+  
+  app.get('/ejs', (req,res)=>{
+  
+    res.render('index', {
+      myServerVariable : "something from server"
+    });
   
     //can you get content from client...to console? 
   })
   
 
+  app.get('/', async (req,res)=>{
 
-  app.get('/read', async (req,res)=>{
-
-    console.log('in /read');
+    console.log('in /');
     await client.connect();
     
     console.log('I should be connected');
@@ -83,13 +82,11 @@ app.get('/ejs', (req,res)=>{
 
     console.log("req.parms.id: ", req.params.id)
   
-    await client.connect();
+    client.connect; 
 
     const collection = client.db("courtneys-db").collection("courtneys-collection");
-    
     let result = await collection.findOneAndUpdate( 
-    
-      {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
+    {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
   )
   .then(result => {
     console.log(result); 
@@ -101,13 +98,11 @@ app.get('/ejs', (req,res)=>{
   
     console.log("req.parms.id: ", req.params.id)
   
-    await client.connect();
-
+    client.connect; 
+    
     const collection = client.db("courtneys-db").collection("courtneys-collection");
-    
     let result = await collection.findOneAndDelete( 
-    
-      {"_id": new ObjectId(req.params.id)})
+    {"_id": new ObjectId(req.params.id)})
   
   .then(result => {
     console.log(result); 
