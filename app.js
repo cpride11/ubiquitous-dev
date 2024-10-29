@@ -30,7 +30,9 @@ const client = new MongoClient(uri, {
 
 app.get('/', function (req, res) {
   // res.send('Hello Node from Ex on local dev box')
-  res.sendFile('index.ejs');
+  res.render('song', {
+    myServerVariable : "something"
+  });
 })
 
 app.get('/ejs', (req,res)=>{
@@ -43,8 +45,9 @@ app.get('/ejs', (req,res)=>{
 })
 
 
-app.get('/', async (req, res) => {
+app.get('/test', async (req, res) => {
 
+  //start here, delete old / and rename this one from /test to / 
   console.log('in /');
   await client.connect();
 
@@ -53,11 +56,12 @@ app.get('/', async (req, res) => {
 
   let result = await client.db("courtneys-db").collection("courtneys-collection")
     .find({}).toArray();
-  //console.log(result);
+  console.log(result);
 
   res.render('song', {
     songData: result
   });
+  //makes ure on song.ejs to change severVarable to songData
 })
 
 app.post('/insert', async (req, res) => {
