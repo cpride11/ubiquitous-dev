@@ -28,19 +28,19 @@ const client = new MongoClient(uri, {
   }
 });
 
-// app.get('/', function (req, res) {
-//   // res.send('Hello Node from Ex on local dev box')
-//   res.sendFile('index.ejs');
-// })
+app.get('/', function (req, res) {
+  // res.send('Hello Node from Ex on local dev box')
+  res.sendFile('index.ejs');
+})
 
-// app.get('/ejs', (req,res)=>{
+app.get('/ejs', (req,res)=>{
 
-//   res.render('index', {
-//     myServerVariable : "something from server"
-//   });
+  res.render('index', {
+    myServerVariable : "something from server"
+  });
 
-//   //can you get content from client...to console? 
-// })
+  //can you get content from client...to console? 
+})
 
 
 app.get('/', async (req, res) => {
