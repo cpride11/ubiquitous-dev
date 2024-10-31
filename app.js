@@ -31,14 +31,14 @@ const client = new MongoClient(uri, {
 app.get('/', function (req, res) {
   // res.send('Hello Node from Ex on local dev box')
   res.render('song', {
-    myServerVariable : "something"
+    songData : "Welcome to the song page"
   });
 })
 
 app.get('/ejs', (req,res)=>{
 
   res.render('index', {
-    myServerVariable : "something from server"
+    songData : "Welcome to the song page"
   });
 
   //can you get content from client...to console? 
