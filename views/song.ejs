@@ -1,18 +1,5 @@
 <%=songData %>
 
-    <!-- <h3> my songs posts</h3>
-    <% for (var i=0; i< songData.length; i++ ) { %>
-        <form method="POST" action="/update/<%= songData[i]._id %>" style="display: inline-block">
-            <%= songData[i].post %>
-                <input type="submit" value="update">
-        </form>
-        <form method="POST" action="/delete/<%= songData[i]._id %>" style="display: inline-block">
-            <input type="submit" value="delete">
-        </form>
-        <br />
-        <% } %> -->
-
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -68,141 +55,114 @@
 
         <main class="m-2 p-2 row">
             <div class="col-lg-8 offset-lg-2">
-                <h2>Songs I play</h2>
 
-               <!-- <h3> my songs posts</h3>
+                <h2> My Songs Posts</h2>
                 <% for (var i=0; i< songData.length; i++ ) { %>
-
-                    <li id="songNo${index}Name" class="list-group-item mb-1 songName">
-                        <%= songData[i].post %>">
-                    </li>
-                
-                
-
-                    <% } %> -->
-
-
-
-                <div class="mb-3">
-
-                    <button id="btnAddSong" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#addSongModal">add song</button>
-
-                    <button id="btnShowAll" class="btn btn-info btn-sm">show all</button>
-                    <button id="btnHideAll" class="btn btn-info btn-sm">hide all</button>
-
-                    <button id="btnConsoleData" class="btn btn-info btn-sm">write data object in
-                        console</button>
-
-                </div>
-
-                
-
-                <!-- Modal -->
-                <div id="addSongModal" class="modal fade" tabindex="-1" aria-labelledby="addSongModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add New Song</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <ul class="list-group">
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">song name</span>
-                                        <input id="songAddName" type="text" class="form-control"
-                                            placeholder="song name">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">artist</span>
-                                        <input id="songAddArtist" type="text" class="form-control" placeholder="artist">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">status</span>
-                                        <input id="songAddStatus" type="text" class="form-control" placeholder="status">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">chords</span>
-                                        <input id="songAddChords" type="text" class="form-control" placeholder="chords">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">lyrics?</span>
-                                        <input id="songAddLyrics" type="text" class="form-control" placeholder="lyrics">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">next?</span>
-                                        <input id="songAddNext" type="text" class="form-control"
-                                            placeholder="next steps?">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">Notes</span>
-                                        <input id="songAddNotes" type="text" class="form-control"
-                                            placeholder="notes about it">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">Tags</span>
-                                        <input id="songAddTags" type="text" class="form-control"
-                                            placeholder="tags, separated, by, commas">
-                                    </li>
-
-                                    <li class="input-group w-100">
-                                        <span class="w-20 input-group-text">Links</span>
-                                        <input id="songAddLinks" type="text" class="form-control"
-                                            placeholder="links, separated, by, commas">
-                                    </li>
-
-
-                                </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button id="btnSaveSong" type="button" class="btn btn-primary">save
-                                    song</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <ul id="songList" class="list-group">
-                    <li class="list-group-item">no songs loaded</li>
-
-                </ul>
-
-               <!-- <h3> my songs posts</h3>
-                <% for (var i=0; i< songData.length; i++ ) { %>
-
-                    <li id="songNo${index}Name" class="list-group-item mb-1 songName">
-                        <%= songData[i].post %>">
-                    </li>
-
-                
+                    <form method="POST" action="/update/<%= songData[i]._id %>" style="display: inline-block">
+                        <%= songData[i].post %>
+                            <input type="submit" value="update">
+                    </form>
+                    <form method="POST" action="/delete/<%= songData[i]._id %>" style="display: inline-block">
+                        <input type="submit" value="delete">
+                    </form>
+                    <br />
 
                     <% } %>
-            -->
-                        <h3> my songs posts</h3>
-                        <% for (var i=0; i< songData.length; i++ ) { %>
-                            <form method="POST" action="/update/<%= songData[i]._id %>" style="display: inline-block">
-                                <%= songData[i].post %>
-                                    <input type="submit" value="update">
-                            </form>
-                            <form method="POST" action="/delete/<%= songData[i]._id %>" style="display: inline-block">
-                                <input type="submit" value="delete">
-                            </form>
-                            <br />
 
-                        <% } %>
+                        <div class="mb-3">
+
+                            <button id="btnAddSong" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#addSongModal">add song</button>
+
+                            <button id="btnShowAll" class="btn btn-info btn-sm">show all</button>
+                            <button id="btnHideAll" class="btn btn-info btn-sm">hide all</button>
+
+                            <button id="btnConsoleData" class="btn btn-info btn-sm">write data object in
+                                console</button>
+
+                        </div>
 
 
+
+                        <!-- Modal -->
+                        <div id="addSongModal" class="modal fade" tabindex="-1" aria-labelledby="addSongModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add New Song</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="list-group">
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">song name</span>
+                                                <input id="songAddName" type="text" class="form-control"
+                                                    placeholder="song name">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">artist</span>
+                                                <input id="songAddArtist" type="text" class="form-control"
+                                                    placeholder="artist">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">status</span>
+                                                <input id="songAddStatus" type="text" class="form-control"
+                                                    placeholder="status">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">chords</span>
+                                                <input id="songAddChords" type="text" class="form-control"
+                                                    placeholder="chords">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">lyrics?</span>
+                                                <input id="songAddLyrics" type="text" class="form-control"
+                                                    placeholder="lyrics">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">next?</span>
+                                                <input id="songAddNext" type="text" class="form-control"
+                                                    placeholder="next steps?">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">Notes</span>
+                                                <input id="songAddNotes" type="text" class="form-control"
+                                                    placeholder="notes about it">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">Tags</span>
+                                                <input id="songAddTags" type="text" class="form-control"
+                                                    placeholder="tags, separated, by, commas">
+                                            </li>
+
+                                            <li class="input-group w-100">
+                                                <span class="w-20 input-group-text">Links</span>
+                                                <input id="songAddLinks" type="text" class="form-control"
+                                                    placeholder="links, separated, by, commas">
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button id="btnSaveSong" type="button" class="btn btn-primary">save
+                                            song</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
             </div>
         </main>
 
