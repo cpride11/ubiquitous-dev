@@ -1,76 +1,74 @@
 <%=songData %>
 
-    <!-- <h3> my songs posts</h3>
-    <% for (var i=0; i< songData.length; i++ ) { %>
-        <form method="POST" action="/update/<%= songData[i]._id %>" style="display: inline-block">
-            <%= songData[i].post %>
-                <input type="submit" value="update">
-        </form>
-        <form method="POST" action="/delete/<%= songData[i]._id %>" style="display: inline-block">
-            <input type="submit" value="delete">
-        </form>
-        <br />
-        <% } %> -->
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>bc secret guitar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+        <link rel="stylesheet" href="styles/guitar-style.css">
+
+    </head>
+
+    <body>
 
 
-            <!DOCTYPE html>
-            <html lang="en">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-cassette"></i>
+                    Barry's Secret Guitar APP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item fluid">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
 
-            <head>
-                <meta charset="UTF-8">
-                <title>bc secret guitar</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-                <link rel='stylesheet'
-                    href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
-                <link rel="stylesheet" href="styles/guitar-style.css">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/about.html">about barry</a>
+                        </li>
 
-            </head>
-
-            <body>
-
-
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#">
-                            <i class="bi bi-cassette"></i>
-                            Barry's Secret Guitar APP</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item fluid">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/about.html">about barry</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" target="repo"
-                                        href="https://github.com/barrycumbie/urban-fishstick-guitar-app/">
-                                        &lt;source code <i class="bi bi-github"></i>&gt;</a>
-                                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="repo"
+                                href="https://github.com/barrycumbie/urban-fishstick-guitar-app/">
+                                &lt;source code <i class="bi bi-github"></i>&gt;</a>
+                        </li>
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link" target="nu"
-                                        href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fbarrycumbie.github.io%2Furban-fishstick-guitar-app%2F">
-                                        check page validity ✅</a>
-                                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="nu"
+                                href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fbarrycumbie.github.io%2Furban-fishstick-guitar-app%2F">
+                                check page validity ✅</a>
+                        </li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-                <main class="m-2 p-2 row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h2>Songs I play</h2>
+        <main class="m-2 p-2 row">
+            <div class="col-lg-8 offset-lg-2">
+
+                <h2> My Songs Posts</h2>
+                <% for (var i=0; i< songData.length; i++ ) { %>
+                    <form method="POST" action="/update/<%= songData[i]._id %>" style="display: inline-block">
+                        <%= songData[i].post %>
+                            <input type="submit" value="update">
+                    </form>
+                    <form method="POST" action="/delete/<%= songData[i]._id %>" style="display: inline-block">
+                        <input type="submit" value="delete">
+                    </form>
+                    <br />
+
+                    <% } %>
+
                         <div class="mb-3">
 
                             <button id="btnAddSong" class="btn btn-outline-primary" data-bs-toggle="modal"
@@ -83,6 +81,8 @@
                                 console</button>
 
                         </div>
+
+
 
                         <!-- Modal -->
                         <div id="addSongModal" class="modal fade" tabindex="-1" aria-labelledby="addSongModalLabel"
@@ -151,6 +151,7 @@
                                                     placeholder="links, separated, by, commas">
                                             </li>
 
+
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -162,62 +163,30 @@
                                 </div>
                             </div>
                         </div>
+            </div>
+        </main>
 
-                        <ul id="songList" class="list-group">
-                            <li class="list-group-item">no songs loaded</li>
+        <footer class="footer bg-bg-tertiary text-center text-lg-start fixed-bottom">
 
-                        </ul>
+            <!-- Copyright -->
+            <div class="text-center p-3 container-fluid" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2024
+                <a class="text-body" href="https://github.com/barrycumbie" target="github">bc@github</a> |
 
-                        <h3> my songs posts</h3>
-                        <% for (var i=0; i< songData.length; i++ ) { %>
+                <a href="https://gist.github.com/assets/22795694/d414efab-a80c-4b31-aeac-9636a0681f41"
+                    target="_blank">see my
+                    wireframe</a>
+                <!-- Copyright -->
+            </div>
+        </footer>
+        <!-- scripts go here -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'>
+        </script>
+        <script src="scripts/data.js"></script>
+        <script src="scripts/guitar-script.js"></script>
 
-                            <li id="songNo${index}Name" class="list-group-item mb-1 songName">
-                                <%= songData[i].post %>">
-                            </li>
+    </body>
 
-
-
-                            <% } %>
-
-                                <h3> my songs posts</h3>
-                                <% for (var i=0; i< songData.length; i++ ) { %>
-                                    <form method="POST" action="/update/<%= songData[i]._id %>"
-                                        style="display: inline-block">
-                                        <%= songData[i].post %>
-                                            <input type="submit" value="update">
-                                    </form>
-                                    <form method="POST" action="/delete/<%= songData[i]._id %>"
-                                        style="display: inline-block">
-                                        <input type="submit" value="delete">
-                                    </form>
-                                    <br />
-                                    <% } %>
-
-
-                    </div>
-                </main>
-
-                <footer class="footer bg-bg-tertiary text-center text-lg-start fixed-bottom">
-
-                    <!-- Copyright -->
-                    <div class="text-center p-3 container-fluid" style="background-color: rgba(0, 0, 0, 0.05);">
-                        © 2024
-                        <a class="text-body" href="https://github.com/barrycumbie" target="github">bc@github</a> |
-
-                        <a href="https://gist.github.com/assets/22795694/d414efab-a80c-4b31-aeac-9636a0681f41"
-                            target="_blank">see my
-                            wireframe</a>
-                        <!-- Copyright -->
-                    </div>
-                </footer>
-                <!-- scripts go here -->
-                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
-                <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
-                <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'>
-                </script>
-                <script src="scripts/data.js"></script>
-                <script src="scripts/guitar-script.js"></script>
-
-            </body>
-
-            </html>
+    </html>
