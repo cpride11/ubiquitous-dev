@@ -7,7 +7,7 @@ function addEvents() {
     });
 
 
-  $('#AddSong').on('click', () => {
+  $('#AddSongModal').on('click', () => {
     data.songs.push({
       name: $('#songAddName').val(),
       artist: $('#songAddArtist').val(),
