@@ -18,7 +18,9 @@ function loadSongData(appendId) {
                       <span class="w-20 input
                       -group-text">artist</span>
                       <input id="songNo${index}ArtistEdit" name="artist" type="text" class="form-control editSong" value="${song.artist}">  
-                                    </li>
+
+                  </li> 
+ 
                                 </ul>
                                 <button class="btn btn-danger btn-sm" onclick="deleteSong(${index})">Delete</button>
                             </li>`);
@@ -28,12 +30,17 @@ function loadSongData(appendId) {
                   }
                 
 
+
 // function loadSongData(appendId) {
 //   let appendElement = $(`#${ appendId }`);
 //   appendElement.empty();
 
 //   $.each(data.songs, (index, song) => {
 //     appendElement.append(`
+
+   });
+}
+
 //           <li id="songNo${index}Name" class="list-group-item mb-1 songName">
 //               ${song.name} 
 //               <ul class="list-group songDetails">
@@ -77,6 +84,7 @@ function loadSongData(appendId) {
 //     $('input.editSong').prop('readonly', true);
 //   });
 // }
+
 
 function addEvents() {
         $('.songName').on('click', (e) => {
@@ -141,4 +149,6 @@ function deleteSong(index) {
           loadSongPosts("songList"); // Reload the song list
           addEvents(); // Re-add events
         }
-      }
+
+      } // End of deleteSong function
+
