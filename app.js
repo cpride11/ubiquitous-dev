@@ -9,6 +9,8 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const PORT = process.env.PORT || 5500;
 const uri = `mongodb+srv://cpride11:${process.env.MONGO_PWD}@cluster0.mw4al.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
+
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 app.use(express.static('./public/'))
@@ -41,6 +43,22 @@ async function run() {
 }
 run().catch(console.dir);
 
+// app.get('/', function (req, res) {
+//   // res.send('Hello Node from Ex on local dev box')
+//   res.render('song', {
+//     songData : "Welcome to the song page"
+//   });
+// })
+
+// app.get('/ejs', (req,res)=>{
+
+//   res.render('index', {
+//     songData : "Welcome to the song page"
+//   });
+
+//   //can you get content from client...to console? 
+// })
+
 
 app.get('/', async function (req, res) {
 
@@ -48,6 +66,15 @@ app.get('/', async function (req, res) {
   console.log('in /');
   await client.connect();
   console.log("I should be connected");
+
+  // p.ping("https://ubiquitous-umbrella-dev-idx5.onrender.com")
+  //   .then(result => {
+  //     console.log('I should be connected' + result);
+  //     // Send a ping to confirm a successful connection
+  //   })
+  //   .catch(result => {
+  //     console.error('Not connected' + result);
+  //   })
 
   let result = await client.db("courtneys-db").collection("courtneys-collection")
     .find({}).toArray();
@@ -65,10 +92,16 @@ app.post('/insert', async (req, res) => {
 
   console.log('in /insert');
 
+  // console.log('request', req.body);
+  // console.log('request', req.body.newPost);
+
+  //connect to db,
   await client.connect();
 
   //point to the collection 
   await client.db("courtneys-db").collection("courtneys-collection").insertOne({ fname: req.body.fname });
+  //await client.db("courtneys-db").collection("courtneys-collection").insertOne({ iJustMadeThisUp: 'hardcoded new key '});  
+  //insert into it
 
   res.redirect('/');
 
@@ -106,8 +139,12 @@ app.post('/delete/:id', async (req, res) => {
       res.redirect('/');
     })
 
+  //insert into it
+
 })
 
+
+//app.listen(5500)
 
 app.listen(PORT, () => {
   console.log(`Server is running & listening on port ${PORT}`);
