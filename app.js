@@ -72,9 +72,10 @@ app.get('/', async function (req, res) {
   //makes sure on song.ejs to change severVarable to songData
 });
 
-app.get('/insert', async (req, res) => {
+app.post('/insert', async (req, res) => {
 
   console.log('in /insert');
+  console.log("req.body: ", req.body);
 
   //connect to db,
   await client.connect();
