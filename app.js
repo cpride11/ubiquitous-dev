@@ -43,22 +43,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-// app.get('/', function (req, res) {
-//   // res.send('Hello Node from Ex on local dev box')
-//   res.render('song', {
-//     songData : "Welcome to the song page"
-//   });
-// })
-
-// app.get('/ejs', (req,res)=>{
-
-//   res.render('index', {
-//     songData : "Welcome to the song page"
-//   });
-
-//   //can you get content from client...to console? 
-// })
-
 
 app.get('/', async function (req, res) {
 
@@ -92,16 +76,11 @@ app.post('/insert', async (req, res) => {
 
   console.log('in /insert');
 
-  // console.log('request', req.body);
-  // console.log('request', req.body.newPost);
-
   //connect to db,
   await client.connect();
 
   //point to the collection 
-  await client.db("courtneys-db").collection("courtneys-collection").insertOne({ fname: req.body.fname });
-  //await client.db("courtneys-db").collection("courtneys-collection").insertOne({ iJustMadeThisUp: 'hardcoded new key '});  
-  //insert into it
+  await client.db("courtneys-db").collection("courtneys-collection").insertOne({ post: req.body.songAddName });
 
   res.redirect('/');
 
@@ -112,12 +91,12 @@ app.post('/update/:id', async (req, res) => {
 
   console.log("req.body: ", req.body)
 
-  client.connect;
+  await client.connect;
 
   const collection = client.db("courtneys-db").collection("courtneys-collection");
 
   let result = await collection.findOneAndUpdate(
-    { "_id": new ObjectId(req.body.nameID) }, { $set: { "fname": req.body.inputUpdateName } }
+    { "_id": new ObjectId(req.params.id) }, { $set: { "post": req.body.inputUpdateName } }
   )
     .then(result => {
       console.log(result);
@@ -139,12 +118,8 @@ app.post('/delete/:id', async (req, res) => {
       res.redirect('/');
     })
 
-  //insert into it
 
 })
-
-
-//app.listen(5500)
 
 app.listen(PORT, () => {
   console.log(`Server is running & listening on port ${PORT}`);
