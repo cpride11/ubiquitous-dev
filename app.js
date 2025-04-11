@@ -15,7 +15,6 @@ app.set('view engine', 'ejs')
 app.use(express.static('./public/'))
 
 console.log('im on a node server, yo');
-
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -78,9 +77,7 @@ app.post('/insert',
 
 app.post('/update/:id', async (req, res) => {
 
-  console.log("req.body: ", req.body)
-
-  ;
+  console.log("req.body: ", req.body);
 
   const collection = client.db("courtneys-db").collection("courtneys-collection");
 
