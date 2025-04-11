@@ -6,16 +6,15 @@ const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const { body, validationResult } = require('express-validator');
 const PORT = process.env.PORT || 5500;
 const uri = `mongodb+srv://cpride11:${process.env.MONGO_PWD}@cluster0.mw4al.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-
-
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 app.use(express.static('./public/'))
 
-console.log(uri);
+// console.log(uri);
 
 console.log('im on a node server, yo');
 
@@ -51,15 +50,6 @@ app.get('/', async function (req, res) {
   await client.connect();
   console.log("I should be connected");
 
-  // p.ping("https://ubiquitous-umbrella-dev-idx5.onrender.com")
-  //   .then(result => {
-  //     console.log('I should be connected' + result);
-  //     // Send a ping to confirm a successful connection
-  //   })
-  //   .catch(result => {
-  //     console.error('Not connected' + result);
-  //   })
-
   let result = await client.db("courtneys-db").collection("courtneys-collection")
     .find({}).toArray();
   console.log(result);
@@ -72,7 +62,7 @@ app.get('/', async function (req, res) {
   //makes sure on song.ejs to change severVarable to songData
 });
 
-app.post('/insert', async (req, res) => {
+/*app.post('/insert', async (req, res) => {
 
   console.log('in /insert');
   console.log("req.body: ", req.body);
@@ -85,6 +75,22 @@ app.post('/insert', async (req, res) => {
 
   res.redirect('/');
 
+}); */
+
+
+app.post('/insert', 
+  body('songAddName').trim().escape(),
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).send('Invalid input');
+    }
+
+    await client.connect();
+    await client.db("courtneys-db").collection("courtneys-collection")
+      .insertOne({ post: req.body.songAddName });
+
+    res.redirect('/');
 });
 
 
@@ -92,7 +98,7 @@ app.post('/update/:id', async (req, res) => {
 
   console.log("req.body: ", req.body)
 
-  await client.connect;
+  ;
 
   const collection = client.db("courtneys-db").collection("courtneys-collection");
 
@@ -109,7 +115,7 @@ app.post('/delete/:id', async (req, res) => {
 
   console.log("in delete, req.parms.id: ", req.params.id)
 
-  await client.connect;
+  await client.connect();
 
   const collection = client.db("courtneys-db").collection("courtneys-collection");
 
