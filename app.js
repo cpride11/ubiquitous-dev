@@ -14,10 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 app.use(express.static('./public/'))
 
-// console.log(uri);
-
 console.log('im on a node server, yo');
-
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -61,21 +58,6 @@ app.get('/', async function (req, res) {
   // });
   //makes sure on song.ejs to change severVarable to songData
 });
-
-/*app.post('/insert', async (req, res) => {
-
-  console.log('in /insert');
-  console.log("req.body: ", req.body);
-
-  //connect to db,
-  await client.connect();
-
-  //point to the collection 
-  await client.db("courtneys-db").collection("courtneys-collection").insertOne({ post: req.body.songAddName });
-
-  res.redirect('/');
-
-}); */
 
 
 app.post('/insert', 
